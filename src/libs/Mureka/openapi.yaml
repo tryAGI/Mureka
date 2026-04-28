@@ -1,0 +1,622 @@
+openapi: 3.0.3
+info:
+  title: Mureka API
+  version: "1.0.0"
+  description: |
+    Focused OpenAPI description for the public Mureka music generation API.
+    The upstream documentation is published as HTML pages, so this spec is
+    maintained from https://docs.skyworkmodel.ai/mureka/.
+  contact:
+    name: Skywork Model
+    url: https://docs.skyworkmodel.ai/mureka/
+servers:
+  - url: https://api.skyworkmodel.ai
+    description: Production
+security:
+  - BearerAuth: []
+tags:
+  - name: Files
+  - name: Lyrics
+  - name: Songs
+  - name: Instrumentals
+paths:
+  "/api/v1/music?action=file_upload":
+    post:
+      tags:
+        - Files
+      operationId: uploadFile
+      summary: Upload an audio or reference file
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/FileUploadRequest"
+      responses:
+        "200":
+          description: Uploaded file metadata.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadResponse"
+
+  "/api/v1/music?action=lyrics_generate":
+    post:
+      tags:
+        - Lyrics
+      operationId: generateLyrics
+      summary: Generate lyrics from a prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateLyricsRequest"
+      responses:
+        "200":
+          description: Generated title and lyrics.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateLyricsResponse"
+
+  "/api/v1/music?action=lyrics_extend":
+    post:
+      tags:
+        - Lyrics
+      operationId: extendLyrics
+      summary: Extend existing lyrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExtendLyricsRequest"
+      responses:
+        "200":
+          description: Extended lyrics.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExtendLyricsResponse"
+
+  "/api/v1/music?action=song_generate":
+    post:
+      tags:
+        - Songs
+      operationId: generateSong
+      summary: Generate a complete song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateSongRequest"
+      responses:
+        "200":
+          description: Song generation task.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+
+  "/api/v1/music?action=song_query&task_id={task_id}":
+    get:
+      tags:
+        - Songs
+      operationId: getSongTask
+      summary: Query a song generation task
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Current song task state.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SongTaskResponse"
+
+  "/api/v1/music?action=song_extend":
+    post:
+      tags:
+        - Songs
+      operationId: extendSong
+      summary: Extend an existing song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExtendSongRequest"
+      responses:
+        "200":
+          description: Song extension task.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+
+  "/api/v1/music?action=song_recognize":
+    post:
+      tags:
+        - Songs
+      operationId: recognizeSong
+      summary: Recognize lyrics and timings from an uploaded song
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecognizeSongRequest"
+      responses:
+        "200":
+          description: Timed lyrics.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecognizeSongResponse"
+
+  "/api/v1/music?action=song_describe":
+    post:
+      tags:
+        - Songs
+      operationId: describeSong
+      summary: Describe instrumentation, genres, tags, and style
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DescribeSongRequest"
+      responses:
+        "200":
+          description: Song description.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DescribeSongResponse"
+
+  "/api/v1/music?action=song_stem":
+    post:
+      tags:
+        - Songs
+      operationId: stemSong
+      summary: Separate a song into stems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StemSongRequest"
+      responses:
+        "200":
+          description: ZIP file containing separated stems.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StemSongResponse"
+
+  "/api/v1/music?action=instrumental_generate":
+    post:
+      tags:
+        - Instrumentals
+      operationId: generateInstrumental
+      summary: Generate instrumental music
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateInstrumentalRequest"
+      responses:
+        "200":
+          description: Instrumental generation task.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskResponse"
+
+  "/api/v1/music?action=instrumental_query&task_id={task_id}":
+    get:
+      tags:
+        - Instrumentals
+      operationId: getInstrumentalTask
+      summary: Query an instrumental generation task
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Current instrumental task state.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SongTaskResponse"
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: "Mureka API key as `Authorization: Bearer <api-key>`."
+  schemas:
+    FilePurpose:
+      type: string
+      enum:
+        - reference
+        - vocal
+        - melody
+        - instrumental
+        - voice
+        - audio
+
+    FileUploadRequest:
+      type: object
+      required:
+        - file
+        - purpose
+      properties:
+        file:
+          type: string
+          format: binary
+        purpose:
+          $ref: "#/components/schemas/FilePurpose"
+
+    FileUploadData:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        bytes:
+          type: integer
+          format: int64
+        created_at:
+          type: integer
+          format: int64
+        filename:
+          type: string
+        purpose:
+          type: string
+        status:
+          type: string
+
+    FileUploadResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/FileUploadData"
+
+    GenerateLyricsRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+
+    GenerateLyricsData:
+      type: object
+      properties:
+        title:
+          type: string
+        lyrics:
+          type: string
+
+    GenerateLyricsResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/GenerateLyricsData"
+
+    ExtendLyricsRequest:
+      type: object
+      required:
+        - lyrics
+      properties:
+        lyrics:
+          type: string
+
+    ExtendLyricsData:
+      type: object
+      properties:
+        lyrics:
+          type: string
+
+    ExtendLyricsResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/ExtendLyricsData"
+
+    GenerateSongRequest:
+      type: object
+      required:
+        - lyrics
+      properties:
+        lyrics:
+          type: string
+        model:
+          type: string
+          enum:
+            - auto
+            - mureka-6
+            - mureka-7.5
+            - mureka-o1
+        n:
+          type: integer
+          minimum: 1
+          maximum: 3
+        prompt:
+          type: string
+        reference_id:
+          type: string
+        vocal_id:
+          type: string
+        melody_id:
+          type: string
+        instrumental_id:
+          type: string
+
+    GenerateInstrumentalRequest:
+      type: object
+      properties:
+        prompt:
+          type: string
+        model:
+          type: string
+          enum:
+            - auto
+            - mureka-6
+            - mureka-7.5
+        n:
+          type: integer
+          minimum: 1
+          maximum: 3
+        instrumental_id:
+          type: string
+
+    ExtendSongRequest:
+      type: object
+      required:
+        - extend_at
+      properties:
+        song_id:
+          type: string
+        upload_audio_id:
+          type: string
+        lyrics:
+          type: string
+        extend_at:
+          type: integer
+          format: int64
+          minimum: 8000
+          maximum: 420000
+
+    RecognizeSongRequest:
+      type: object
+      required:
+        - upload_audio_id
+      properties:
+        upload_audio_id:
+          type: string
+
+    DescribeSongRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+
+    StemSongRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+
+    BaseResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        code_msg:
+          type: string
+        message:
+          type: string
+        trace_id:
+          type: string
+
+    TaskData:
+      type: object
+      properties:
+        id:
+          type: string
+        task_id:
+          type: string
+        created_at:
+          type: integer
+          format: int64
+        finished_at:
+          type: integer
+          format: int64
+        model:
+          type: string
+        status:
+          type: string
+        failed_reason:
+          type: string
+        watermarked:
+          type: boolean
+        progress:
+          type: integer
+        choices:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/SongChoice"
+
+    TaskResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/TaskData"
+
+    SongTaskResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/TaskData"
+            data:
+              $ref: "#/components/schemas/TaskData"
+
+    SongChoice:
+      type: object
+      properties:
+        index:
+          type: integer
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        flac_url:
+          type: string
+          format: uri
+        stream_url:
+          type: string
+          format: uri
+        duration:
+          type: integer
+          format: int64
+        lyrics_sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/LyricsSection"
+
+    LyricsSection:
+      type: object
+      properties:
+        section_type:
+          type: string
+        start:
+          type: integer
+          format: int64
+        end:
+          type: integer
+          format: int64
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/LyricsLine"
+
+    LyricsLine:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int64
+        end:
+          type: integer
+          format: int64
+        text:
+          type: string
+        words:
+          type: array
+          items:
+            $ref: "#/components/schemas/LyricsWord"
+
+    LyricsWord:
+      type: object
+      properties:
+        start:
+          type: integer
+          format: int64
+        end:
+          type: integer
+          format: int64
+        text:
+          type: string
+
+    RecognizeSongData:
+      type: object
+      properties:
+        duration:
+          type: integer
+          format: int64
+        lyrics_sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/LyricsSection"
+
+    RecognizeSongResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/RecognizeSongData"
+
+    DescribeSongData:
+      type: object
+      properties:
+        instrument:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+
+    DescribeSongResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/DescribeSongData"
+
+    StemSongData:
+      type: object
+      properties:
+        zip_url:
+          type: string
+          format: uri
+        expires_at:
+          type: integer
+          format: int64
+
+    StemSongResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            resp_data:
+              $ref: "#/components/schemas/StemSongData"
