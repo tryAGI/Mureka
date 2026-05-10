@@ -40,5 +40,6 @@ namespace Mureka
         public GenerateLyricsRequest()
         {
         }
+
     }
 }
