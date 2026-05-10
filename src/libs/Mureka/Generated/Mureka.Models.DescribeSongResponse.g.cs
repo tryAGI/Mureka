@@ -42,6 +42,13 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.DescribeSongResponseVariant2? DescribeSongResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mureka
             value = DescribeSongResponseVariant2;
             return IsDescribeSongResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.DescribeSongResponseVariant2 PickDescribeSongResponseVariant2() => IsDescribeSongResponseVariant2
+            ? DescribeSongResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DescribeSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static DescribeSongResponse FromBase(global::Mureka.BaseResponse? value) => new DescribeSongResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator DescribeSongResponse(global::Mureka.DescribeSongResponseVariant2 value) => new DescribeSongResponse((global::Mureka.DescribeSongResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Mureka
         {
             DescribeSongResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static DescribeSongResponse FromDescribeSongResponseVariant2(global::Mureka.DescribeSongResponseVariant2? value) => new DescribeSongResponse(value);
 
         /// <summary>
         /// 

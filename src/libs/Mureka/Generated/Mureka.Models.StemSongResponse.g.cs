@@ -42,6 +42,13 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.StemSongResponseVariant2? StemSongResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mureka
             value = StemSongResponseVariant2;
             return IsStemSongResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.StemSongResponseVariant2 PickStemSongResponseVariant2() => IsStemSongResponseVariant2
+            ? StemSongResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StemSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static StemSongResponse FromBase(global::Mureka.BaseResponse? value) => new StemSongResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StemSongResponse(global::Mureka.StemSongResponseVariant2 value) => new StemSongResponse((global::Mureka.StemSongResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Mureka
         {
             StemSongResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StemSongResponse FromStemSongResponseVariant2(global::Mureka.StemSongResponseVariant2? value) => new StemSongResponse(value);
 
         /// <summary>
         /// 

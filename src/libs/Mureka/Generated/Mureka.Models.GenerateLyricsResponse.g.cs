@@ -42,6 +42,13 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.GenerateLyricsResponseVariant2? GenerateLyricsResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mureka
             value = GenerateLyricsResponseVariant2;
             return IsGenerateLyricsResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.GenerateLyricsResponseVariant2 PickGenerateLyricsResponseVariant2() => IsGenerateLyricsResponseVariant2
+            ? GenerateLyricsResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'GenerateLyricsResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static GenerateLyricsResponse FromBase(global::Mureka.BaseResponse? value) => new GenerateLyricsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GenerateLyricsResponse(global::Mureka.GenerateLyricsResponseVariant2 value) => new GenerateLyricsResponse((global::Mureka.GenerateLyricsResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Mureka
         {
             GenerateLyricsResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GenerateLyricsResponse FromGenerateLyricsResponseVariant2(global::Mureka.GenerateLyricsResponseVariant2? value) => new GenerateLyricsResponse(value);
 
         /// <summary>
         /// 

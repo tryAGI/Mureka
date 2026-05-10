@@ -42,6 +42,13 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.FileUploadResponseVariant2? FileUploadResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mureka
             value = FileUploadResponseVariant2;
             return IsFileUploadResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.FileUploadResponseVariant2 PickFileUploadResponseVariant2() => IsFileUploadResponseVariant2
+            ? FileUploadResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FileUploadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static FileUploadResponse FromBase(global::Mureka.BaseResponse? value) => new FileUploadResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FileUploadResponse(global::Mureka.FileUploadResponseVariant2 value) => new FileUploadResponse((global::Mureka.FileUploadResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Mureka
         {
             FileUploadResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FileUploadResponse FromFileUploadResponseVariant2(global::Mureka.FileUploadResponseVariant2? value) => new FileUploadResponse(value);
 
         /// <summary>
         /// 
