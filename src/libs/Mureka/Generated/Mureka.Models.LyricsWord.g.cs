@@ -57,5 +57,6 @@ namespace Mureka
         public LyricsWord()
         {
         }
+
     }
 }
