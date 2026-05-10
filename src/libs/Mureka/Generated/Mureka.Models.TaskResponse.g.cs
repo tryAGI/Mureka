@@ -42,6 +42,13 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.TaskResponseVariant2? TaskResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Mureka
             value = TaskResponseVariant2;
             return IsTaskResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.TaskResponseVariant2 PickTaskResponseVariant2() => IsTaskResponseVariant2
+            ? TaskResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TaskResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static TaskResponse FromBase(global::Mureka.BaseResponse? value) => new TaskResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TaskResponse(global::Mureka.TaskResponseVariant2 value) => new TaskResponse((global::Mureka.TaskResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Mureka
         {
             TaskResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TaskResponse FromTaskResponseVariant2(global::Mureka.TaskResponseVariant2? value) => new TaskResponse(value);
 
         /// <summary>
         /// 
