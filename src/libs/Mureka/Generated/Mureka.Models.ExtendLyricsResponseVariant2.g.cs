@@ -39,5 +39,6 @@ namespace Mureka
         public ExtendLyricsResponseVariant2()
         {
         }
+
     }
 }

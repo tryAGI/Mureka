@@ -29,6 +29,26 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.BaseResponse? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.StemSongResponseVariant2? StemSongResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mureka
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StemSongResponseVariant2))]
 #endif
         public bool IsStemSongResponseVariant2 => StemSongResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStemSongResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.StemSongResponseVariant2? value)
+        {
+            value = StemSongResponseVariant2;
+            return IsStemSongResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.StemSongResponseVariant2 PickStemSongResponseVariant2() => IsStemSongResponseVariant2
+            ? StemSongResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StemSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static StemSongResponse FromBase(global::Mureka.BaseResponse? value) => new StemSongResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StemSongResponse(global::Mureka.StemSongResponseVariant2 value) => new StemSongResponse((global::Mureka.StemSongResponseVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mureka
         {
             StemSongResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StemSongResponse FromStemSongResponseVariant2(global::Mureka.StemSongResponseVariant2? value) => new StemSongResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mureka
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mureka.BaseResponse?, TResult>? @base = null,
-            global::System.Func<global::Mureka.StemSongResponseVariant2?, TResult>? stemSongResponseVariant2 = null,
+            global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
+            global::System.Func<global::Mureka.StemSongResponseVariant2, TResult>? stemSongResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mureka
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mureka.BaseResponse?>? @base = null,
-            global::System.Action<global::Mureka.StemSongResponseVariant2?>? stemSongResponseVariant2 = null,
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+
+            global::System.Action<global::Mureka.StemSongResponseVariant2>? stemSongResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsStemSongResponseVariant2)
+            {
+                stemSongResponseVariant2?.Invoke(StemSongResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+            global::System.Action<global::Mureka.StemSongResponseVariant2>? stemSongResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

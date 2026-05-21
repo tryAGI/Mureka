@@ -29,6 +29,26 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.BaseResponse? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.RecognizeSongResponseVariant2? RecognizeSongResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mureka
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RecognizeSongResponseVariant2))]
 #endif
         public bool IsRecognizeSongResponseVariant2 => RecognizeSongResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRecognizeSongResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.RecognizeSongResponseVariant2? value)
+        {
+            value = RecognizeSongResponseVariant2;
+            return IsRecognizeSongResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.RecognizeSongResponseVariant2 PickRecognizeSongResponseVariant2() => IsRecognizeSongResponseVariant2
+            ? RecognizeSongResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RecognizeSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static RecognizeSongResponse FromBase(global::Mureka.BaseResponse? value) => new RecognizeSongResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RecognizeSongResponse(global::Mureka.RecognizeSongResponseVariant2 value) => new RecognizeSongResponse((global::Mureka.RecognizeSongResponseVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mureka
         {
             RecognizeSongResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RecognizeSongResponse FromRecognizeSongResponseVariant2(global::Mureka.RecognizeSongResponseVariant2? value) => new RecognizeSongResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mureka
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mureka.BaseResponse?, TResult>? @base = null,
-            global::System.Func<global::Mureka.RecognizeSongResponseVariant2?, TResult>? recognizeSongResponseVariant2 = null,
+            global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
+            global::System.Func<global::Mureka.RecognizeSongResponseVariant2, TResult>? recognizeSongResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mureka
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mureka.BaseResponse?>? @base = null,
-            global::System.Action<global::Mureka.RecognizeSongResponseVariant2?>? recognizeSongResponseVariant2 = null,
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+
+            global::System.Action<global::Mureka.RecognizeSongResponseVariant2>? recognizeSongResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsRecognizeSongResponseVariant2)
+            {
+                recognizeSongResponseVariant2?.Invoke(RecognizeSongResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+            global::System.Action<global::Mureka.RecognizeSongResponseVariant2>? recognizeSongResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

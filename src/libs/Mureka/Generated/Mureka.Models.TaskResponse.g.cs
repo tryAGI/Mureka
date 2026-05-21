@@ -29,6 +29,26 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.BaseResponse? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.TaskResponseVariant2? TaskResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mureka
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TaskResponseVariant2))]
 #endif
         public bool IsTaskResponseVariant2 => TaskResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTaskResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.TaskResponseVariant2? value)
+        {
+            value = TaskResponseVariant2;
+            return IsTaskResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.TaskResponseVariant2 PickTaskResponseVariant2() => IsTaskResponseVariant2
+            ? TaskResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TaskResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static TaskResponse FromBase(global::Mureka.BaseResponse? value) => new TaskResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TaskResponse(global::Mureka.TaskResponseVariant2 value) => new TaskResponse((global::Mureka.TaskResponseVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mureka
         {
             TaskResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TaskResponse FromTaskResponseVariant2(global::Mureka.TaskResponseVariant2? value) => new TaskResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mureka
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mureka.BaseResponse?, TResult>? @base = null,
-            global::System.Func<global::Mureka.TaskResponseVariant2?, TResult>? taskResponseVariant2 = null,
+            global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
+            global::System.Func<global::Mureka.TaskResponseVariant2, TResult>? taskResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mureka
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mureka.BaseResponse?>? @base = null,
-            global::System.Action<global::Mureka.TaskResponseVariant2?>? taskResponseVariant2 = null,
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+
+            global::System.Action<global::Mureka.TaskResponseVariant2>? taskResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsTaskResponseVariant2)
+            {
+                taskResponseVariant2?.Invoke(TaskResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+            global::System.Action<global::Mureka.TaskResponseVariant2>? taskResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

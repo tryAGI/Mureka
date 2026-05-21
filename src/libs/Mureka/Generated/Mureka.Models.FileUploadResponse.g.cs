@@ -29,6 +29,26 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.BaseResponse? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.FileUploadResponseVariant2? FileUploadResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mureka
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FileUploadResponseVariant2))]
 #endif
         public bool IsFileUploadResponseVariant2 => FileUploadResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFileUploadResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.FileUploadResponseVariant2? value)
+        {
+            value = FileUploadResponseVariant2;
+            return IsFileUploadResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.FileUploadResponseVariant2 PickFileUploadResponseVariant2() => IsFileUploadResponseVariant2
+            ? FileUploadResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FileUploadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static FileUploadResponse FromBase(global::Mureka.BaseResponse? value) => new FileUploadResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FileUploadResponse(global::Mureka.FileUploadResponseVariant2 value) => new FileUploadResponse((global::Mureka.FileUploadResponseVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mureka
         {
             FileUploadResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FileUploadResponse FromFileUploadResponseVariant2(global::Mureka.FileUploadResponseVariant2? value) => new FileUploadResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mureka
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mureka.BaseResponse?, TResult>? @base = null,
-            global::System.Func<global::Mureka.FileUploadResponseVariant2?, TResult>? fileUploadResponseVariant2 = null,
+            global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
+            global::System.Func<global::Mureka.FileUploadResponseVariant2, TResult>? fileUploadResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mureka
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mureka.BaseResponse?>? @base = null,
-            global::System.Action<global::Mureka.FileUploadResponseVariant2?>? fileUploadResponseVariant2 = null,
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+
+            global::System.Action<global::Mureka.FileUploadResponseVariant2>? fileUploadResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsFileUploadResponseVariant2)
+            {
+                fileUploadResponseVariant2?.Invoke(FileUploadResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+            global::System.Action<global::Mureka.FileUploadResponseVariant2>? fileUploadResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

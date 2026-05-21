@@ -45,7 +45,7 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
-        public FilesClient Files => new FilesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -54,7 +54,7 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
-        public InstrumentalsClient Instrumentals => new InstrumentalsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public InstrumentalsClient Instrumentals => new InstrumentalsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -63,7 +63,7 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
-        public LyricsClient Lyrics => new LyricsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LyricsClient Lyrics => new LyricsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -72,7 +72,7 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
-        public SongsClient Songs => new SongsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SongsClient Songs => new SongsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -101,6 +101,27 @@ namespace Mureka
         }
 
         /// <summary>
+        /// Creates a new instance of the MurekaClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public MurekaClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::Mureka.EndPointAuthorization>? authorizations,
+            global::Mureka.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
         /// Creates a new instance of the MurekaClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
@@ -111,10 +132,10 @@ namespace Mureka
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public MurekaClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Mureka.EndPointAuthorization>? authorizations = null,
-            global::Mureka.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Mureka.EndPointAuthorization>? authorizations,
+            global::Mureka.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 

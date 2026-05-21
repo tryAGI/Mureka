@@ -39,5 +39,6 @@ namespace Mureka
         public StemSongResponseVariant2()
         {
         }
+
     }
 }

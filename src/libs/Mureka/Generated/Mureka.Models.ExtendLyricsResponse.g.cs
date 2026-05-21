@@ -29,6 +29,26 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.BaseResponse? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.BaseResponse PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.ExtendLyricsResponseVariant2? ExtendLyricsResponseVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Mureka
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExtendLyricsResponseVariant2))]
 #endif
         public bool IsExtendLyricsResponseVariant2 => ExtendLyricsResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickExtendLyricsResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Mureka.ExtendLyricsResponseVariant2? value)
+        {
+            value = ExtendLyricsResponseVariant2;
+            return IsExtendLyricsResponseVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Mureka.ExtendLyricsResponseVariant2 PickExtendLyricsResponseVariant2() => IsExtendLyricsResponseVariant2
+            ? ExtendLyricsResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ExtendLyricsResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Mureka
         /// <summary>
         /// 
         /// </summary>
+        public static ExtendLyricsResponse FromBase(global::Mureka.BaseResponse? value) => new ExtendLyricsResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ExtendLyricsResponse(global::Mureka.ExtendLyricsResponseVariant2 value) => new ExtendLyricsResponse((global::Mureka.ExtendLyricsResponseVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Mureka
         {
             ExtendLyricsResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ExtendLyricsResponse FromExtendLyricsResponseVariant2(global::Mureka.ExtendLyricsResponseVariant2? value) => new ExtendLyricsResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Mureka
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Mureka.BaseResponse?, TResult>? @base = null,
-            global::System.Func<global::Mureka.ExtendLyricsResponseVariant2?, TResult>? extendLyricsResponseVariant2 = null,
+            global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
+            global::System.Func<global::Mureka.ExtendLyricsResponseVariant2, TResult>? extendLyricsResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Mureka
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Mureka.BaseResponse?>? @base = null,
-            global::System.Action<global::Mureka.ExtendLyricsResponseVariant2?>? extendLyricsResponseVariant2 = null,
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+
+            global::System.Action<global::Mureka.ExtendLyricsResponseVariant2>? extendLyricsResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsExtendLyricsResponseVariant2)
+            {
+                extendLyricsResponseVariant2?.Invoke(ExtendLyricsResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Mureka.BaseResponse>? @base = null,
+            global::System.Action<global::Mureka.ExtendLyricsResponseVariant2>? extendLyricsResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
