@@ -100,9 +100,9 @@ internal static partial class SongsExtendSongCommandApiCommand
                             RequestFile,
                             global::Mureka.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var songId = CliRuntime.WasSpecified(parseResult, SongId) ? parseResult.GetValue(SongId) : __requestBase is not null ? __requestBase.SongId : default;
-                        var uploadAudioId = CliRuntime.WasSpecified(parseResult, UploadAudioId) ? parseResult.GetValue(UploadAudioId) : __requestBase is not null ? __requestBase.UploadAudioId : default;
-                        var lyrics = CliRuntime.WasSpecified(parseResult, Lyrics) ? parseResult.GetValue(Lyrics) : __requestBase is not null ? __requestBase.Lyrics : default;
+                        var songId = CliRuntime.WasSpecified(parseResult, SongId) ? parseResult.GetValue(SongId) : (__requestBase is { } __SongIdBaseValue ? __SongIdBaseValue.SongId : default);
+                        var uploadAudioId = CliRuntime.WasSpecified(parseResult, UploadAudioId) ? parseResult.GetValue(UploadAudioId) : (__requestBase is { } __UploadAudioIdBaseValue ? __UploadAudioIdBaseValue.UploadAudioId : default);
+                        var lyrics = CliRuntime.WasSpecified(parseResult, Lyrics) ? parseResult.GetValue(Lyrics) : (__requestBase is { } __LyricsBaseValue ? __LyricsBaseValue.Lyrics : default);
                         var extendAt = parseResult.GetRequiredValue(ExtendAt);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 

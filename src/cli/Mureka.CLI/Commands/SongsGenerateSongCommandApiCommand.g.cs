@@ -129,13 +129,13 @@ internal static partial class SongsGenerateSongCommandApiCommand
                             global::Mureka.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var lyrics = parseResult.GetRequiredValue(Lyrics);
-                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : __requestBase is not null ? __requestBase.Model : default;
-                        var n = CliRuntime.WasSpecified(parseResult, N) ? parseResult.GetValue(N) : __requestBase is not null ? __requestBase.N : default;
-                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : __requestBase is not null ? __requestBase.Prompt : default;
-                        var referenceId = CliRuntime.WasSpecified(parseResult, ReferenceId) ? parseResult.GetValue(ReferenceId) : __requestBase is not null ? __requestBase.ReferenceId : default;
-                        var vocalId = CliRuntime.WasSpecified(parseResult, VocalId) ? parseResult.GetValue(VocalId) : __requestBase is not null ? __requestBase.VocalId : default;
-                        var melodyId = CliRuntime.WasSpecified(parseResult, MelodyId) ? parseResult.GetValue(MelodyId) : __requestBase is not null ? __requestBase.MelodyId : default;
-                        var instrumentalId = CliRuntime.WasSpecified(parseResult, InstrumentalId) ? parseResult.GetValue(InstrumentalId) : __requestBase is not null ? __requestBase.InstrumentalId : default;
+                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : (__requestBase is { } __ModelBaseValue ? __ModelBaseValue.Model : default);
+                        var n = CliRuntime.WasSpecified(parseResult, N) ? parseResult.GetValue(N) : (__requestBase is { } __NBaseValue ? __NBaseValue.N : default);
+                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : (__requestBase is { } __PromptBaseValue ? __PromptBaseValue.Prompt : default);
+                        var referenceId = CliRuntime.WasSpecified(parseResult, ReferenceId) ? parseResult.GetValue(ReferenceId) : (__requestBase is { } __ReferenceIdBaseValue ? __ReferenceIdBaseValue.ReferenceId : default);
+                        var vocalId = CliRuntime.WasSpecified(parseResult, VocalId) ? parseResult.GetValue(VocalId) : (__requestBase is { } __VocalIdBaseValue ? __VocalIdBaseValue.VocalId : default);
+                        var melodyId = CliRuntime.WasSpecified(parseResult, MelodyId) ? parseResult.GetValue(MelodyId) : (__requestBase is { } __MelodyIdBaseValue ? __MelodyIdBaseValue.MelodyId : default);
+                        var instrumentalId = CliRuntime.WasSpecified(parseResult, InstrumentalId) ? parseResult.GetValue(InstrumentalId) : (__requestBase is { } __InstrumentalIdBaseValue ? __InstrumentalIdBaseValue.InstrumentalId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
