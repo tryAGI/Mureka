@@ -99,10 +99,10 @@ internal static partial class InstrumentalsGenerateInstrumentalCommandApiCommand
                             RequestFile,
                             global::Mureka.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : __requestBase is not null ? __requestBase.Prompt : default;
-                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : __requestBase is not null ? __requestBase.Model : default;
-                        var n = CliRuntime.WasSpecified(parseResult, N) ? parseResult.GetValue(N) : __requestBase is not null ? __requestBase.N : default;
-                        var instrumentalId = CliRuntime.WasSpecified(parseResult, InstrumentalId) ? parseResult.GetValue(InstrumentalId) : __requestBase is not null ? __requestBase.InstrumentalId : default;
+                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : (__requestBase is { } __PromptBaseValue ? __PromptBaseValue.Prompt : default);
+                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : (__requestBase is { } __ModelBaseValue ? __ModelBaseValue.Model : default);
+                        var n = CliRuntime.WasSpecified(parseResult, N) ? parseResult.GetValue(N) : (__requestBase is { } __NBaseValue ? __NBaseValue.N : default);
+                        var instrumentalId = CliRuntime.WasSpecified(parseResult, InstrumentalId) ? parseResult.GetValue(InstrumentalId) : (__requestBase is { } __InstrumentalIdBaseValue ? __InstrumentalIdBaseValue.InstrumentalId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
