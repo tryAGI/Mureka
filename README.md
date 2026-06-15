@@ -40,6 +40,13 @@ using Mureka;
 using var client = new MurekaClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Mureka.CLI --prerelease
+mureka api --help
+```
+
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
 
