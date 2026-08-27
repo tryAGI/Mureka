@@ -4,20 +4,20 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GenerateInstrumentalRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mureka6,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mureka75,
     }

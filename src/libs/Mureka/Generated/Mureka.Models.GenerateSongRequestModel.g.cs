@@ -4,24 +4,24 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GenerateSongRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mureka6,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mureka75,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MurekaO1,
     }

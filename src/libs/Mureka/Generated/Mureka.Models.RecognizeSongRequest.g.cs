@@ -4,12 +4,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RecognizeSongRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("upload_audio_id")]
         [global::System.Text.Json.Serialization.JsonRequired]

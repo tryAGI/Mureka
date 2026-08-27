@@ -4,32 +4,32 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FilePurpose
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Audio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Instrumental,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Melody,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Reference,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vocal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Voice,
     }

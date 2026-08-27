@@ -42,28 +42,28 @@ namespace Mureka
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilesClient Files { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InstrumentalsClient Instrumentals { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LyricsClient Lyrics { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SongsClient Songs { get; }
 

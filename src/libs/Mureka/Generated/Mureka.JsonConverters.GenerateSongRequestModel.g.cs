@@ -20,7 +20,7 @@ namespace Mureka.JsonConverters
                     {
                         return global::Mureka.GenerateSongRequestModelExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
