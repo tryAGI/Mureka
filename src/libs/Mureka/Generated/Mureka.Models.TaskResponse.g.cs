@@ -5,12 +5,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TaskResponse : global::System.IEquatable<TaskResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.BaseResponse? Base { get; init; }
@@ -19,7 +19,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace Mureka
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.BaseResponse PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.TaskResponseVariant2? TaskResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TaskResponseVariant2))]
@@ -64,7 +64,7 @@ namespace Mureka
         public bool IsTaskResponseVariant2 => TaskResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTaskResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.TaskResponseVariant2 PickTaskResponseVariant2() => IsTaskResponseVariant2
             ? TaskResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TaskResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TaskResponse(global::Mureka.BaseResponse value) => new TaskResponse((global::Mureka.BaseResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.BaseResponse?(TaskResponse @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskResponse(global::Mureka.BaseResponse? value)
         {
@@ -101,22 +101,22 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TaskResponse FromBase(global::Mureka.BaseResponse? value) => new TaskResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TaskResponse(global::Mureka.TaskResponseVariant2 value) => new TaskResponse((global::Mureka.TaskResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.TaskResponseVariant2?(TaskResponse @this) => @this.TaskResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskResponse(global::Mureka.TaskResponseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TaskResponse FromTaskResponseVariant2(global::Mureka.TaskResponseVariant2? value) => new TaskResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskResponse(
             global::Mureka.BaseResponse? @base,
@@ -141,23 +141,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TaskResponseVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            TaskResponseVariant2?.ToString() 
+            TaskResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
@@ -190,7 +190,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -214,7 +214,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -237,7 +237,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TaskResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mureka.BaseResponse?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mureka.TaskResponseVariant2?>.Default.Equals(TaskResponseVariant2, other.TaskResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mureka.TaskResponseVariant2?>.Default.Equals(TaskResponseVariant2, other.TaskResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TaskResponse obj1, TaskResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TaskResponse obj1, TaskResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -5,12 +5,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct DescribeSongResponse : global::System.IEquatable<DescribeSongResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.BaseResponse? Base { get; init; }
@@ -19,7 +19,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace Mureka
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.BaseResponse PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.DescribeSongResponseVariant2? DescribeSongResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DescribeSongResponseVariant2))]
@@ -64,7 +64,7 @@ namespace Mureka
         public bool IsDescribeSongResponseVariant2 => DescribeSongResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDescribeSongResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.DescribeSongResponseVariant2 PickDescribeSongResponseVariant2() => IsDescribeSongResponseVariant2
             ? DescribeSongResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'DescribeSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DescribeSongResponse(global::Mureka.BaseResponse value) => new DescribeSongResponse((global::Mureka.BaseResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.BaseResponse?(DescribeSongResponse @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DescribeSongResponse(global::Mureka.BaseResponse? value)
         {
@@ -101,22 +101,22 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DescribeSongResponse FromBase(global::Mureka.BaseResponse? value) => new DescribeSongResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DescribeSongResponse(global::Mureka.DescribeSongResponseVariant2 value) => new DescribeSongResponse((global::Mureka.DescribeSongResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.DescribeSongResponseVariant2?(DescribeSongResponse @this) => @this.DescribeSongResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DescribeSongResponse(global::Mureka.DescribeSongResponseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DescribeSongResponse FromDescribeSongResponseVariant2(global::Mureka.DescribeSongResponseVariant2? value) => new DescribeSongResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DescribeSongResponse(
             global::Mureka.BaseResponse? @base,
@@ -141,23 +141,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             DescribeSongResponseVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            DescribeSongResponseVariant2?.ToString() 
+            DescribeSongResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
@@ -190,7 +190,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -214,7 +214,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -237,7 +237,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(DescribeSongResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mureka.BaseResponse?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mureka.DescribeSongResponseVariant2?>.Default.Equals(DescribeSongResponseVariant2, other.DescribeSongResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mureka.DescribeSongResponseVariant2?>.Default.Equals(DescribeSongResponseVariant2, other.DescribeSongResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(DescribeSongResponse obj1, DescribeSongResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(DescribeSongResponse obj1, DescribeSongResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

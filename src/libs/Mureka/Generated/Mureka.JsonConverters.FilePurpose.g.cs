@@ -20,7 +20,7 @@ namespace Mureka.JsonConverters
                     {
                         return global::Mureka.FilePurposeExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

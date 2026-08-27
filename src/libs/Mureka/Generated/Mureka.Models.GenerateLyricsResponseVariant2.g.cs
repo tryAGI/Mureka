@@ -4,12 +4,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GenerateLyricsResponseVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resp_data")]
         public global::Mureka.GenerateLyricsData? RespData { get; set; }

@@ -4,12 +4,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GenerateLyricsRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonRequired]

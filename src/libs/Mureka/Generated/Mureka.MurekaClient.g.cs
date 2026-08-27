@@ -40,7 +40,7 @@ namespace Mureka
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Mureka.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -50,7 +50,7 @@ namespace Mureka
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -59,7 +59,7 @@ namespace Mureka
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public InstrumentalsClient Instrumentals => new InstrumentalsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -68,7 +68,7 @@ namespace Mureka
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public LyricsClient Lyrics => new LyricsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -77,7 +77,7 @@ namespace Mureka
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SongsClient Songs => new SongsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

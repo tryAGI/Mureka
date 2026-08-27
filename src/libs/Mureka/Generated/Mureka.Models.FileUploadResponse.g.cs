@@ -5,12 +5,12 @@
 namespace Mureka
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct FileUploadResponse : global::System.IEquatable<FileUploadResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.BaseResponse? Base { get; init; }
@@ -19,7 +19,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace Mureka
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.BaseResponse PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Mureka.FileUploadResponseVariant2? FileUploadResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Mureka
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FileUploadResponseVariant2))]
@@ -64,7 +64,7 @@ namespace Mureka
         public bool IsFileUploadResponseVariant2 => FileUploadResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFileUploadResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Mureka.FileUploadResponseVariant2 PickFileUploadResponseVariant2() => IsFileUploadResponseVariant2
             ? FileUploadResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileUploadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FileUploadResponse(global::Mureka.BaseResponse value) => new FileUploadResponse((global::Mureka.BaseResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.BaseResponse?(FileUploadResponse @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FileUploadResponse(global::Mureka.BaseResponse? value)
         {
@@ -101,22 +101,22 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FileUploadResponse FromBase(global::Mureka.BaseResponse? value) => new FileUploadResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FileUploadResponse(global::Mureka.FileUploadResponseVariant2 value) => new FileUploadResponse((global::Mureka.FileUploadResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Mureka.FileUploadResponseVariant2?(FileUploadResponse @this) => @this.FileUploadResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FileUploadResponse(global::Mureka.FileUploadResponseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FileUploadResponse FromFileUploadResponseVariant2(global::Mureka.FileUploadResponseVariant2? value) => new FileUploadResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FileUploadResponse(
             global::Mureka.BaseResponse? @base,
@@ -141,23 +141,23 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             FileUploadResponseVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            FileUploadResponseVariant2?.ToString() 
+            FileUploadResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Mureka.BaseResponse, TResult>? @base = null,
@@ -190,7 +190,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -214,7 +214,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Mureka.BaseResponse>? @base = null,
@@ -237,7 +237,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(FileUploadResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Mureka.BaseResponse?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<global::Mureka.FileUploadResponseVariant2?>.Default.Equals(FileUploadResponseVariant2, other.FileUploadResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Mureka.FileUploadResponseVariant2?>.Default.Equals(FileUploadResponseVariant2, other.FileUploadResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(FileUploadResponse obj1, FileUploadResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(FileUploadResponse obj1, FileUploadResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace Mureka
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
