@@ -68,6 +68,8 @@ internal static partial class SongsExtendSongCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"extend-song", @"Extend an existing song");
@@ -122,6 +124,7 @@ internal static partial class SongsExtendSongCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

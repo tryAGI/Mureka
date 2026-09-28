@@ -67,6 +67,8 @@ internal static partial class InstrumentalsGenerateInstrumentalCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"generate-instrumental", @"Generate instrumental music");
@@ -121,6 +123,7 @@ internal static partial class InstrumentalsGenerateInstrumentalCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

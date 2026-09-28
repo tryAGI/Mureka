@@ -33,6 +33,8 @@ internal static partial class SongsGetSongTaskCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-song-task", @"Query a song generation task");
@@ -58,6 +60,7 @@ internal static partial class SongsGetSongTaskCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
