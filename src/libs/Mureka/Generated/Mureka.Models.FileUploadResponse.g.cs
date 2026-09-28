@@ -42,8 +42,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.BaseResponse PickBase() => IsBase
-            ? Base!
+        public global::Mureka.BaseResponse PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.FileUploadResponseVariant2 PickFileUploadResponseVariant2() => IsFileUploadResponseVariant2
-            ? FileUploadResponseVariant2!
+        public global::Mureka.FileUploadResponseVariant2 PickFileUploadResponseVariant2() => FileUploadResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FileUploadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsFileUploadResponseVariant2 && fileUploadResponseVariant2 != null)
+            else if (FileUploadResponseVariant2 is { } __value1 && fileUploadResponseVariant2 != null)
             {
-                return fileUploadResponseVariant2(FileUploadResponseVariant2!);
+                return fileUploadResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsFileUploadResponseVariant2)
+            else if (FileUploadResponseVariant2 is { } __value1)
             {
-                fileUploadResponseVariant2?.Invoke(FileUploadResponseVariant2!);
+                fileUploadResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsFileUploadResponseVariant2)
+            else if (FileUploadResponseVariant2 is { } __value1)
             {
-                fileUploadResponseVariant2?.Invoke(FileUploadResponseVariant2!);
+                fileUploadResponseVariant2?.Invoke(__value1);
             }
         }
 
