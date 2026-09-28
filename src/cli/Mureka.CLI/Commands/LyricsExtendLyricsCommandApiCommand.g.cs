@@ -34,6 +34,8 @@ internal static partial class LyricsExtendLyricsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"extend-lyrics", @"Extend existing lyrics");
@@ -59,6 +61,7 @@ internal static partial class LyricsExtendLyricsCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

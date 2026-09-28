@@ -33,6 +33,8 @@ internal static partial class InstrumentalsGetInstrumentalTaskCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-instrumental-task", @"Query an instrumental generation task");
@@ -58,6 +60,7 @@ internal static partial class InstrumentalsGetInstrumentalTaskCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

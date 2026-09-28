@@ -33,6 +33,8 @@ internal static partial class SongsDescribeSongCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"describe-song", @"Describe instrumentation, genres, tags, and style");
@@ -58,6 +60,7 @@ internal static partial class SongsDescribeSongCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

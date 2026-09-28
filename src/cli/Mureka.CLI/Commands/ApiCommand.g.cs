@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Mureka.CLI.Commands;
 
-internal static class ApiCommand
+internal static partial class ApiCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command("api", "Generated endpoint commands.");
@@ -14,6 +16,7 @@ internal static class ApiCommand
                          command.Subcommands.Add(InstrumentalsApiGroupCommand.Create());
                          command.Subcommands.Add(LyricsApiGroupCommand.Create());
                          command.Subcommands.Add(SongsApiGroupCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -34,6 +34,8 @@ internal static partial class SongsRecognizeSongCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"recognize-song", @"Recognize lyrics and timings from an uploaded song");
@@ -59,6 +61,7 @@ internal static partial class SongsRecognizeSongCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
