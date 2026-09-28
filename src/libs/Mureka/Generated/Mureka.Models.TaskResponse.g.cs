@@ -42,8 +42,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.BaseResponse PickBase() => IsBase
-            ? Base!
+        public global::Mureka.BaseResponse PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.TaskResponseVariant2 PickTaskResponseVariant2() => IsTaskResponseVariant2
-            ? TaskResponseVariant2!
+        public global::Mureka.TaskResponseVariant2 PickTaskResponseVariant2() => TaskResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TaskResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsTaskResponseVariant2 && taskResponseVariant2 != null)
+            else if (TaskResponseVariant2 is { } __value1 && taskResponseVariant2 != null)
             {
-                return taskResponseVariant2(TaskResponseVariant2!);
+                return taskResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsTaskResponseVariant2)
+            else if (TaskResponseVariant2 is { } __value1)
             {
-                taskResponseVariant2?.Invoke(TaskResponseVariant2!);
+                taskResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsTaskResponseVariant2)
+            else if (TaskResponseVariant2 is { } __value1)
             {
-                taskResponseVariant2?.Invoke(TaskResponseVariant2!);
+                taskResponseVariant2?.Invoke(__value1);
             }
         }
 

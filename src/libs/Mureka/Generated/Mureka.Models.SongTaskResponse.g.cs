@@ -42,8 +42,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.BaseResponse PickBase() => IsBase
-            ? Base!
+        public global::Mureka.BaseResponse PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.SongTaskResponseVariant2 PickSongTaskResponseVariant2() => IsSongTaskResponseVariant2
-            ? SongTaskResponseVariant2!
+        public global::Mureka.SongTaskResponseVariant2 PickSongTaskResponseVariant2() => SongTaskResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SongTaskResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsSongTaskResponseVariant2 && songTaskResponseVariant2 != null)
+            else if (SongTaskResponseVariant2 is { } __value1 && songTaskResponseVariant2 != null)
             {
-                return songTaskResponseVariant2(SongTaskResponseVariant2!);
+                return songTaskResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsSongTaskResponseVariant2)
+            else if (SongTaskResponseVariant2 is { } __value1)
             {
-                songTaskResponseVariant2?.Invoke(SongTaskResponseVariant2!);
+                songTaskResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsSongTaskResponseVariant2)
+            else if (SongTaskResponseVariant2 is { } __value1)
             {
-                songTaskResponseVariant2?.Invoke(SongTaskResponseVariant2!);
+                songTaskResponseVariant2?.Invoke(__value1);
             }
         }
 

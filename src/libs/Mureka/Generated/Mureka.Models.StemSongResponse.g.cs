@@ -42,8 +42,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.BaseResponse PickBase() => IsBase
-            ? Base!
+        public global::Mureka.BaseResponse PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Mureka
         /// <summary>
         ///
         /// </summary>
-        public global::Mureka.StemSongResponseVariant2 PickStemSongResponseVariant2() => IsStemSongResponseVariant2
-            ? StemSongResponseVariant2!
+        public global::Mureka.StemSongResponseVariant2 PickStemSongResponseVariant2() => StemSongResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StemSongResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsStemSongResponseVariant2 && stemSongResponseVariant2 != null)
+            else if (StemSongResponseVariant2 is { } __value1 && stemSongResponseVariant2 != null)
             {
-                return stemSongResponseVariant2(StemSongResponseVariant2!);
+                return stemSongResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsStemSongResponseVariant2)
+            else if (StemSongResponseVariant2 is { } __value1)
             {
-                stemSongResponseVariant2?.Invoke(StemSongResponseVariant2!);
+                stemSongResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Mureka
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsStemSongResponseVariant2)
+            else if (StemSongResponseVariant2 is { } __value1)
             {
-                stemSongResponseVariant2?.Invoke(StemSongResponseVariant2!);
+                stemSongResponseVariant2?.Invoke(__value1);
             }
         }
 
