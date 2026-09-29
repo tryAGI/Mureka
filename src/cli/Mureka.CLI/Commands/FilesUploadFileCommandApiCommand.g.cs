@@ -50,9 +50,9 @@ internal static partial class FilesUploadFileCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"upload-file", @"Upload an audio or reference file");
+        var command = new Command(commandName ?? @"upload-file", @"Upload an audio or reference file");
                         command.Options.Add(File);
                         command.Options.Add(Filename);
                         command.Options.Add(Purpose);

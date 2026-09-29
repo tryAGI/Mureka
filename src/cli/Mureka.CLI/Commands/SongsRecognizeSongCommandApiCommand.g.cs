@@ -36,9 +36,9 @@ internal static partial class SongsRecognizeSongCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"recognize-song", @"Recognize lyrics and timings from an uploaded song");
+        var command = new Command(commandName ?? @"recognize-song", @"Recognize lyrics and timings from an uploaded song");
                         command.Options.Add(UploadAudioId);
 
 

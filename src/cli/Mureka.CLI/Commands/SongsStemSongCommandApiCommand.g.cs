@@ -35,9 +35,9 @@ internal static partial class SongsStemSongCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"stem-song", @"Separate a song into stems");
+        var command = new Command(commandName ?? @"stem-song", @"Separate a song into stems");
                         command.Arguments.Add(Url);
 
 
