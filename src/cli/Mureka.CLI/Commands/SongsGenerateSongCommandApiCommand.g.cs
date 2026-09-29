@@ -94,9 +94,9 @@ internal static partial class SongsGenerateSongCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"generate-song", @"Generate a complete song");
+        var command = new Command(commandName ?? @"generate-song", @"Generate a complete song");
                         command.Options.Add(Lyrics);
                         command.Options.Add(Model);
                         command.Options.Add(N);

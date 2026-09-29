@@ -70,9 +70,9 @@ internal static partial class SongsExtendSongCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"extend-song", @"Extend an existing song");
+        var command = new Command(commandName ?? @"extend-song", @"Extend an existing song");
                         command.Options.Add(SongId);
                         command.Options.Add(UploadAudioId);
                         command.Options.Add(Lyrics);

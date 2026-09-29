@@ -35,9 +35,9 @@ internal static partial class SongsDescribeSongCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"describe-song", @"Describe instrumentation, genres, tags, and style");
+        var command = new Command(commandName ?? @"describe-song", @"Describe instrumentation, genres, tags, and style");
                         command.Arguments.Add(Url);
 
 

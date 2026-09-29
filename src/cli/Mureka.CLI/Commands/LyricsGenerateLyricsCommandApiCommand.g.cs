@@ -36,9 +36,9 @@ internal static partial class LyricsGenerateLyricsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"generate-lyrics", @"Generate lyrics from a prompt");
+        var command = new Command(commandName ?? @"generate-lyrics", @"Generate lyrics from a prompt");
                         command.Options.Add(Prompt);
 
 

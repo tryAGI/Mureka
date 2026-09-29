@@ -35,9 +35,9 @@ internal static partial class SongsGetSongTaskCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-song-task", @"Query a song generation task");
+        var command = new Command(commandName ?? @"get-song-task", @"Query a song generation task");
                         command.Arguments.Add(TaskId);
 
 
