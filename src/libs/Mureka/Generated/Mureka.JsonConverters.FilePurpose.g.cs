@@ -18,7 +18,7 @@ namespace Mureka.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Mureka.FilePurposeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Mureka.FilePurposeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Mureka.FilePurpose.");
                     }
 
                     break;

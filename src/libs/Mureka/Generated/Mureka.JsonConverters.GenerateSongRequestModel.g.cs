@@ -18,7 +18,7 @@ namespace Mureka.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Mureka.GenerateSongRequestModelExtensions.ToEnum(stringValue) ?? default;
+                        return global::Mureka.GenerateSongRequestModelExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Mureka.GenerateSongRequestModel.");
                     }
 
                     break;
