@@ -15,5 +15,6 @@ rootCommand.Subcommands.Add(FilesApiGroupCommand.Create());
 rootCommand.Subcommands.Add(InstrumentalsApiGroupCommand.Create());
 rootCommand.Subcommands.Add(LyricsApiGroupCommand.Create());
 rootCommand.Subcommands.Add(SongsApiGroupCommand.Create());
+rootCommand.Subcommands.Add(CliCompletion.CreateCommand(rootCommand, @"mureka"));
 
 return await rootCommand.Parse(args).InvokeAsync().ConfigureAwait(false);
